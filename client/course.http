@@ -1,0 +1,42 @@
+POST {{baseUrl}}/api/v1/courses HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "identification": "Engenharia",
+    "coordinatorId": 2,
+    "classRoomIds": [
+        4
+    ]
+}
+
+###
+
+GET {{baseUrl}}/api/v1/courses HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+POST {{baseUrl}}/api/v1/courses/2/add-classroom HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "classRoomIds": [
+        6,
+        4
+    ]
+}
+
+###
+
+DELETE  {{baseUrl}}/api/v1/courses/2/remove-classroom HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "classRoomIds": [
+        4,
+        6
+    ]
+}

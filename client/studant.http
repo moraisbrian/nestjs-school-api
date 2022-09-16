@@ -1,0 +1,38 @@
+GET {{baseUrl}}/api/v1/studants HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+GET {{baseUrl}}/api/v1/studants/1 HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+POST {{baseUrl}}/api/v1/studants HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "firstName": "Anderson",
+    "lastName": "De Tal",
+    "courseId": 2
+}
+
+###
+
+DELETE {{baseUrl}}/api/v1/studants/2 HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+
+PUT {{baseUrl}}/api/v1/studants HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": 1,
+    "firstName": "Fulano Updated",
+    "lastName": "De Tal",
+    "isActive": false
+}
+

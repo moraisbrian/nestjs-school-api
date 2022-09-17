@@ -3,8 +3,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "identification": "Banco de Dados",
+    "identification": "Infraestrutura de T.I.",
     "courseIds": [
-        1
+        12
     ]
 }

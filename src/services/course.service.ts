@@ -22,10 +22,10 @@ export class CourseService {
                 coordinatorId: courseDto.coordinatorId
             }, { transaction });
 
-            for (let i = 0; i < courseDto.classRoomIds?.length; i++) {
+            for (const id of courseDto.classRoomIds) {
                 await this.courseClassRoomModel.create({
                     courseId: course.id,
-                    classRoomId: courseDto.classRoomIds[i]
+                    classRoomId: id
                 }, { transaction });
             }
 
@@ -44,12 +44,12 @@ export class CourseService {
         try {
             const course = await this.courseModel.findByPk(id, { include: [ClassRoom] });
 
-            for (let i = 0; i < courseDto.classRoomIds.length; i++) {
-                const finded = course.classRooms.find(c => c.id === courseDto.classRoomIds[i]);
+            for (const id of courseDto.classRoomIds) {
+                const finded = course.classRooms.find(c => c.id === id);
                 if (!finded) {
                     await this.courseClassRoomModel.create({
                         courseId: course.id,
-                        classRoomId: courseDto.classRoomIds[i]
+                        classRoomId: id
                     }, { transaction });
                 }
             }
@@ -69,12 +69,12 @@ export class CourseService {
         try {
             const course = await this.courseModel.findByPk(id, { include: [ClassRoom] });
 
-            for (let i = 0; i < courseDto.classRoomIds.length; i++) {
-                const finded = course.classRooms.find(c => c.id === courseDto.classRoomIds[i]);
+            for (const id of courseDto.classRoomIds) {
+                const finded = course.classRooms.find(c => c.id === id);
                 if (finded) {
                     await this.courseClassRoomModel.destroy({
                         where: { 
-                            classRoomId: courseDto.classRoomIds[i],
+                            classRoomId: id,
                             courseId: course.id
                         }, 
                         transaction

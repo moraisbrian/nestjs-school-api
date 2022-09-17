@@ -19,10 +19,10 @@ export class ClassRoomService {
                 identification: classRoomDto.identification
             }, { transaction });
 
-            for (let i = 0; i < classRoomDto.courseIds?.length; i++) {
+            for (const id of classRoomDto.courseIds) {
                 await this.courseClassRoomModel.create({
                     classRoomId: classRoom.id,
-                    courseId: classRoomDto.courseIds[i]
+                    courseId: id
                 }, { transaction }); 
             }
 
